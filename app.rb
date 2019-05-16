@@ -5,8 +5,6 @@ class App
     @request = Rack::Request.new(env)
     @response = Rack::Response.new
 
-    p @response #del
-
     if @request.path_info == "/time"
       response = TimeFormat.new(@request.params)
 
@@ -27,7 +25,5 @@ class App
     @response.status = status
     @response.header['ContentType'] = 'text/plain'
     @response.write(body.to_s)
-
-    p @response #del
   end
 end
