@@ -18,6 +18,7 @@ class App
     @response.status = status
     @response.header['ContentType'] = 'text/plain'
     @response.write(body.to_s)
+    @response.finish
   end
 
   def time_response
