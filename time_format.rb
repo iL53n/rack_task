@@ -14,7 +14,7 @@ class TimeFormat
   def initialize(params)
     @time_format = []
     @unknown_formats = []
-    set_time_format(params['format'].split(','))
+    @params = params
   end
 
   def valid?
@@ -22,7 +22,9 @@ class TimeFormat
   end
 
   def call
+    set_time_format(@params['format'].split(','))
     Time.now.strftime(@time_format.join('-'))
+    self
   end
 
   private
